@@ -1,11 +1,19 @@
 package UnitTests;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.NoSuchElementException;
 import org.junit.jupiter.api.Test;
 
+/*
+Generally:
+@Test
+void function() {
+    ...
+
+    assert...(expected, actual);
+}
+*/
 
 public class ArraysTest {
     @Test
@@ -19,8 +27,16 @@ public class ArraysTest {
 
     @Test
     void minFailsOnEmptyArray() {
-        assertThrows(NoSuchElementException.class, () -> {
-            Arrays.min(new double[0]);
-        });
+        assertThrows(
+                NoSuchElementException.class,
+                () -> Arrays.min(new double[0])
+        );
+    }
+
+    @Test
+    void precision() {
+        // if the absolute difference between expected and actual is smaller than delta, the test
+        // still passes.
+        assertEquals(3.0, 3.00001, 1e-4);
     }
 }
