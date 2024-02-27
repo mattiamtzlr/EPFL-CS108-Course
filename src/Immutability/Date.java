@@ -13,6 +13,10 @@ public class Date {
         return new Date(year, this.month, this.day);
     }
 
+    public int getYear() {
+        return year;
+    }
+
     @Override
     public String toString() {
         return String.format("%d.%d.%d", day, month, year);
