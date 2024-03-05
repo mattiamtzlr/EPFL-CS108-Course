@@ -1,10 +1,13 @@
 package Generics;
 
+import java.util.List;
+
 public class Cell<E> {
     private final E element;
 
     public Cell(E element) {
         this.element = element;
+        var x = new BoundedTypeParam<>();
     }
 
     public E get() {
