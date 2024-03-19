@@ -12,7 +12,7 @@ public class Maps {
                         but has O(log n)
      */
 
-    static Map<Character, Integer> charIntMap = new HashMap<>(Map.of(
+    public static Map<Character, Integer> charIntMap = new HashMap<>(Map.of(
             'a', 403,
             'b', 810,
             'c', 300,
@@ -38,8 +38,9 @@ public class Maps {
         charIntMap.compute('e', (k, v) -> v == null ? 0 : v);
         System.out.println(charIntMap);
 
-        // if 'g' is already assigned, replace it with the output of the function, else assign it the value
-        charIntMap.merge('g', 123, (k, v) -> v == null ? 0 : v);
+        // if 'g' is already assigned, replace it with the output of the function applied to the
+        // already assigned value and the given value, else assign it the given value
+        charIntMap.merge('b', 123, (a, b) -> a + b);
         System.out.println(charIntMap);
 
         // if the given key maps to the first given value, replace it by the second given value, return
