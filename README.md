@@ -13,3 +13,5 @@ Course material / notes for CS-108, practice of object-oriented programming.
 - Week 5:
   - [Lambdas](/src/Lambdas)
   - [Streams](/src/Streams)
+- Week 6:
+  - [DesignPatters](/src/DesignPatterns)
