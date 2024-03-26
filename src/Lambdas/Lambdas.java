@@ -4,7 +4,7 @@ import Collections.Maps;
 
 import java.util.*;
 
-public class Sorter {
+public class Lambdas {
 
     /*
         Functional Interface -----------------------------------------------------------------------
