@@ -1,19 +1,11 @@
 package Generics;
 
-public class Pair<F, S> {
-    private final F first;
-    private final S second;
-
-    public Pair(F first, S second) {
-        this.first = first;
-        this.second = second;
-    }
-
-    public F first() {
-        return first;
-    }
-
-    public S second() {
-        return second;
+public record Pair<F, S>(F first, S second) {
+    public String verboseString() {
+        return String.format("Pair<%s, %s>: %s, %s",
+                first.getClass().getSimpleName(),
+                second.getClass().getSimpleName(),
+                first, second
+        );
     }
 }

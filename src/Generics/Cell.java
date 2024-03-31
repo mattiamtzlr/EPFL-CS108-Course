@@ -1,6 +1,5 @@
 package Generics;
 
-import java.util.List;
 
 public class Cell<E> {
     private final E element;
@@ -14,7 +13,7 @@ public class Cell<E> {
         return element;
     }
 
-    public String verbosePrint() {
+    public String verboseString() {
         return String.format("Cell<%s>: %s", element.getClass().getSimpleName(), element);
     }
 

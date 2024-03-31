@@ -35,28 +35,16 @@ public class Date {
             this(0, 0, 0);
         }
 
-        public int getYear() {
-            return year;
-        }
-
         // return a DateBuilder to allow chaining (see Main)
         public Builder setYear(int year) {
             this.year = year;
             return this;
         }
 
-        public int getMonth() {
-            return month;
-        }
-
         // return a DateBuilder to allow chaining (see Main)
         public Builder setMonth(int month) {
             this.month = month;
             return this;
-        }
-
-        public int getDay() {
-            return day;
         }
 
         // return a DateBuilder to allow chaining (see Main)
