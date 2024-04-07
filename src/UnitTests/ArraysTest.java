@@ -1,9 +1,11 @@
 package UnitTests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 import java.util.NoSuchElementException;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class ArraysTest {
@@ -18,7 +20,7 @@ public class ArraysTest {
     */
     @Test
     void minWorksOnNonTrivialArray() {
-        double[] a = new double[] {
+        double[] a = new double[]{
                 1, 2, -12, 20, 40, -1003, -1003.2, 12, 12, -1003.2
         };
 

@@ -4,6 +4,7 @@ import Collections.Maps;
 
 import java.util.*;
 
+@SuppressWarnings({"unused"})
 public class Lambdas {
 
     /*
@@ -21,7 +22,7 @@ public class Lambdas {
 
         Lambda functions ---------------------------------------------------------------------------
             A lambda function creates an anonymous class of the given functional interface, with
-            the given arguments and body, then calls the (only !) abstract method on it.
+            the given arguments and body, then calls the (only) abstract method on it.
 
             Lambdas can only be used with functional interfaces, for the reasons described above.
 
@@ -29,7 +30,7 @@ public class Lambdas {
             The arguments can have explicit types, this is optional however as they are inferred
             by java. Also, if there is only one argument, the parentheses may be omitted:
 
-                (Int x) -> x * x      or      (x) -> x * x      or      x -> x * x
+                (int x) -> x * x      or      (x) -> x * x      or      x -> x * x
 
             If the body has multiple expressions it needs an explicit return statement:
 
@@ -40,6 +41,13 @@ public class Lambdas {
 
             A useful use case of lambda functions is Iterable::forEach, which applies the given
             method or lambda function to each element of the given list. See below.
+
+            Lambda functions also have access to the environment that they are defined in; They can
+            access parameters and local variables of the eventual method they are defined in,
+            fields and methods of their parent class and so on.
+            The only restriction to this is, that values used in a lambda function have to be
+            "effectively final" which basically means they have to be immutable.
+            See for example the class Sorter defined in the same package.
 
 
         Method References --------------------------------------------------------------------------
@@ -61,10 +69,31 @@ public class Lambdas {
 
      */
 
-    public static void sortDescending(List<Integer> l) {
+    // instead of defining an anonymous class of Comparator ...
+    static Comparator<Integer> inverseIntegerComp = new Comparator<>() {
+        @Override
+        public int compare(Integer i1, Integer i2) {
+            if (i2 < i1)
+                return -1;
+            else if (i2.equals(i1))
+                return 0;
+            else // if i2 > i1
+                return 1;
+        }
+    };
+
+    // ... and then using it to create a sorting method ...
+    public static void sortDescendingComp(List<Integer> l) {
+        l.sort(inverseIntegerComp);
+    }
+
+    // ... we can use a lambda directly within the sort method where we use the existing compare
+    //     method
+    public static void sortDescendingLambda(List<Integer> l) {
         // takes arguments i1, i2 and passes them to Integer::compare but in reversed order.
         l.sort((i1, i2) -> Integer.compare(i2, i1));
     }
+
 
     public static void printValueAt(RealFunction function, int x) {
         System.out.println(function.valueAt(x));
@@ -72,7 +101,10 @@ public class Lambdas {
 
     public static void main(String[] args) {
         List<Integer> ints = new ArrayList<>(List.of(34, 18, 58, 23, 95, 87, 72, 46));
-        sortDescending(ints);
+        sortDescendingLambda(ints);
+        System.out.println(ints);
+
+        Sorter.sort(ints, Sorter.Order.ASCENDING);
         System.out.println(ints);
 
         printValueAt(

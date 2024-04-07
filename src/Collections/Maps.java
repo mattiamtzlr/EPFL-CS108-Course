@@ -1,15 +1,17 @@
 package Collections;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Maps {
 
     /*
-            HashMap  -  guarantees that the keys are hash-able and thus guarantees O(1) lookup (generally)
-                        but gives no guarantee of the order of lookup.
+        HashMap  -  guarantees that the keys are hash-able and thus guarantees O(1) lookup (generally)
+                    but gives no guarantee of the order of lookup.
 
-            TreeMap  -  guarantees that the keys are comparable, thus guaranteeing increasing lookup order
-                        but has O(log n)
+        TreeMap  -  guarantees that the keys are comparable, thus guaranteeing increasing lookup order
+                    but has O(log n)
      */
 
     public static Map<Character, Integer> charIntMap = new HashMap<>(Map.of(
@@ -26,7 +28,7 @@ public class Maps {
         System.out.printf("charIntMap contains the key '%s': %b%n", 'd', charIntMap.containsKey('d'));
 
         System.out.println(charIntMap.get('c'));
-        System.out.println(charIntMap.getOrDefault('f',0));
+        System.out.println(charIntMap.getOrDefault('f', 0));
 
         charIntMap.put('b', 902);
         charIntMap.putIfAbsent('a', 856);

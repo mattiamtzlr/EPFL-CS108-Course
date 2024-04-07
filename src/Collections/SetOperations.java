@@ -29,7 +29,7 @@ public class SetOperations {
             System.out.println(s1copy);
         }
     }
-    
+
     public static Set<Integer> newS1Copy() {
         return new HashSet<>(Set.copyOf(s1));
     }

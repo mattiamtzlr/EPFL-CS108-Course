@@ -6,7 +6,6 @@ public class Cell<E> {
 
     public Cell(E element) {
         this.element = element;
-        var x = new BoundedTypeParam<>();
     }
 
     public E get() {
