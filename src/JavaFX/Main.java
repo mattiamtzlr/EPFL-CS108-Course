@@ -49,6 +49,104 @@ public class Main extends Application {
 
             The Scene object has to be passed to a Stage instance which represents a graphical
             container.
+
+
+        Nodes --------------------------------------------------------------------------------------
+            There are 4 main types of geometric nodes:
+                - Geometric shapes:     Arc, Circle, Ellipse, Line, Polygon, Polyline, Rectangle
+                - Bézier Curves:        CubicCurve, QuadCurve
+                - Paths:                Path, SVGPath
+                - Text (multi-line):    Text
+
+
+            There are 3 main types of graphic nodes:
+                - ImageView,    showing an image
+                - MediaView,    showing a video
+                - Canvas,       showing a modifiable image where simple content may be drawn.
+
+                The difference between these types of nodes and the geometric ones, is that the
+                latter may be manipulated individually which is not the case for the former.
+                A line drawn on a canvas may not be modified once drawn for example.
+
+
+            There are many types of control nodes all inheriting from Control:
+                - Information (passive):
+                    - Label, representing a simple text label, usually assigned to each input
+
+                    - ProgressIndicator and ProgressBar, displaying info about an ongoing operation.
+
+                - Buttons (active):
+                    - Button, representing a button with one unique state, which can be pressed to
+                      trigger an action.
+
+                    - ToggleButton, RadioButton, representing buttons with two states, meaning they
+                      can be either active or inactive.
+                      A ToggleButton may be individually activated or deactivated (for example for
+                      a settings menu), while a RadioButton is always part of a group of buttons of
+                      the same type of which exactly one may be activated.
+
+                - Atomic Value editors (active):
+                    - HTMLEditor, TextArea, TextField can all be used to present and edit text, of
+                      which the first supports formatting, the second allows multiple lines, and the
+                      last allows only one line.
+
+                    - Slider, allowing to change a value between to bounds
+
+                    - Spinner, TextField with built-in selectors to change the value, needs to be
+                      applied to a value within a set (e.g. integers).
+
+                    - ChoiceBox, allowing to choose a value amidst a given set of values.
+
+                    - ColorPicker, allowing to pick a color.
+
+                    - DatePicker, allowing to choose a Date.
+
+                - Composite Value editors (active):
+                    - ListView, showing a list of values and offering the possibility to choose one.
+
+                    - TableView, showing a table of values, meaning a list with multiple attributes
+                      assigned to each element. As in ListView, a value can also be selected.
+
+                    - TreeView, showing a tree of values, meaning a hierarchy between values, also
+                      allows choosing a value
+
+
+            There are multiple types of Panes all inheriting from Pane:
+                A specialty of panes is that they do not spatially organise their child nodes,
+                meaning they have to be positioned manually.
+
+                Panes take note of the methods of Node used to set a minimal/maximal/preferred
+                width/height minWidth, minHeight, maxWidth, maxHeight, prefWidth, prefHeight.
+
+                Types of panes:
+                    - BorderPane, which has 5 zones (central, top, bottom, left, right) which can
+                      all be occupied by at most one child node. The sizes of the zones are given
+                      by the sizes of their children, the remaining space is given to the center
+                      zone.
+
+                    - GridPane, which organises its child nodes in a grid where the dimensions of
+                      the rows and the columns are given by the sizes of the child nodes.
+                      It is possible to have child nodes span multiple lines and/or rows, and they
+                      can also be aligned (left, right, center, etc.) differently.
+
+                    - StackPane, which organises its child nodes by stacking them on top of each
+                      other, where the first one is placed at the bottom of the stack. The elements
+                      are all rendered partially transparent as to not completely hide the ones
+                      below.
+
+                    - ScrollPane, which only shows part of a node and reveals the rest on scrolling.
+
+                    - TabPane, which has multiple tabs each showing one child node. Only one tab is
+                      visible at a given time.
+
+                    - SplitPane, which is split into multiple parts, each occupied by a different
+                      child node, the partition can either be done horizontally or vertically and
+                      may be changed continuously.
+
+
+
+        Properties and Links -----------------------------------------------------------------------
+            TODO
      */
     public static void main(String[] args) {
         launch(args);
