@@ -1,6 +1,8 @@
 package JavaFX;
 
 import javafx.application.Application;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -146,7 +148,121 @@ public class Main extends Application {
 
 
         Properties and Links -----------------------------------------------------------------------
-            TODO
+            To facilitate the observer design pattern, JavaFX provides the following concepts and
+            classes:
+
+            Properties:
+                A JavaFX property is an observable object containing a unique value. A property can
+                be read-only or read/write.
+                An especially useful property is the class SimpleObjectProperty, inheriting from the
+                class ObjectProperty which can be used as follows:
+
+                    ObjectProperty<String> p = new SimpleObjectProperty<>();
+                    p.addListener((o, oV, nV) -> System.out.println(nV));
+
+                    p.set("hello");     // prints "hello"
+                    p.set("world");     // prints "world"
+
+                As addListener takes a parameter of type ChangeListener which is a functional
+                interface, a lambda function with arguments o (observable), oV (old value) and
+                nV (new value) can be passed.
+
+
+            Observable Collections:
+                As properties can only store one unique value, JavaFX also provides classes
+                representing observable collections, which inherit from the normal java.util
+                collections. For example, the method sort of ObservableList only notifies the
+                observers once the sorting has finished completely.
+
+
+            Beans (what):
+                To combine multiple properties in a classe with the goal of making all of its
+                attributes observable, a convention called JavaFX beans is used. It specifies:
+                    - Every class attribute is represented by a property
+
+                    - Every property corresponding to an attribute needs to be accessible via a
+                      method named the same as the property followed by the word "Property".
+
+                    - The value stored by the property also needs to be accessible via a method
+                      named the same as the property prefixed by the word "get" or "is".
+
+                    - If the property is read/write, a method to change its value needs to be
+                      available.
+
+                Below is an example how a bean representing a person could look like:
+
+                    public final class Person {
+                          public ObjectProperty<String> firstNameProperty() { … }
+                          public String getFirstName() { … }
+                          public void setFirstName(String newFirstName) { … }
+
+                          public ReadOnlyIntegerProperty ageProperty() { … }
+                          public int getAge() { … }
+                    }
+
+                Notice, that there are no classic attributes as they are all represented by
+                properties.
+
+
+            Links:
+                As the code which handles the connection between the observable model and the
+                graphical interface is almost always the same, it is provided in the JavaFX library.
+
+                For this, JavaFX offers the notion of data binding which ensures that the value of
+                one property is always equal to that of another. These links may be uni- or
+                bidirectional.
+
+                Unidirectional links:
+                    A given property is observed and once its value changes, it is copied into
+                    another property.
+                    A unidirectional link can be established via the method bind, which is
+                    applied to the property - meaning the one whose value is always copied from
+                    the other - and its argument is the source property. Its usage is shown below.
+
+                    After a property has been defined as a destination through a unidirectional
+                    link, it may no longer be directly modified using its set method.
+
+                Bidirectional links:
+                    Two properties observe each other and once on changes its value the other
+                    does so as well to reflect the change.
+                    A bidirectional link can be established similarly to a unidirectional link
+                    using the method bindBidirectional. At the moment of the binding, the value
+                    of the second property (passed as the argument) is copied into that of the
+                    first. After that, they are treated symmetrically. See below for an example.
+
+
+
+        Event Handling -----------------------------------------------------------------------------
+            A program with a GUI usually waits until the user interacts with it, reacts to the
+            interaction and then goes back to waiting again. When a program is forced to react we
+            speak of an event.
+
+            This leads to the notion of event-driven programming (oh god LazyMon flashbacks). At
+            the heart of event-based programming is the so-called event loop, which is provided
+            by the JavaFX library. It is sequential, meaning an event has to be completed before
+            the next one can start.
+
+            To handle events, JavaFX provides event handlers for specific situations. The event
+            loop is executed on a separate thread named the JavaFX Application Thread. As this
+            introduces some multi-threaded fuckery, some rules need to be followed, in particular,
+            any manipulation of JavaFX nodes that are part of a graph already attached to a Scene
+            object must be performed from the JavaFX application thread, as must any creation of a
+            Scene or Stage object.
+
+            Event handlers are implemented by the generic and functional interface EventHandler,
+            whose type parameter specifies the type of event handled by the handler. An event
+            handler is attached to and event source (often a node) and its methods are called
+            every time an event is produced.
+
+            A simple example of an event and its handler can be found in the class ClickyButton.
+
+            Once an event has started, JavaFX collects information about it in an object passed to
+            the event handler which is itself called an event.
+
+            The most used events are:
+                - MouseEvent
+                - TouchEvent
+                - KeyEvent
      */
     public static void main(String[] args) {
         launch(args);
@@ -162,6 +278,40 @@ public class Main extends Application {
         vBox.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(vBox);
+
+        // ------------------------------------------------------------------simple property example
+        ObjectProperty<String> p = new SimpleObjectProperty<>();
+        p.addListener((o, oV, nV) -> System.out.println(nV));
+
+        p.set("hello");     // prints "hello"
+        p.set("world");     // prints "world"
+
+        // ------------------------------------------------------------------ unidirectional link
+        ObjectProperty<String> p1 = new SimpleObjectProperty<>();
+        ObjectProperty<String> p2 = new SimpleObjectProperty<>();
+
+        p1.addListener((o, oV, nV) -> System.out.println(nV));
+
+        p2.set("hello");    // prints nothing as p2 has no listener
+        System.out.println("--- now binding p1 to p2 ---");
+        // binds the value of p2 to that of p1 (and copies it a first time, thus prints "hello").
+        p1.bind(p2);
+        p2.set("world");    // prints "world" as p2 is bound to p1
+
+        // raises an exception, as p1 is defined as a unidirectional link destination
+        // p1.set("test");
+
+        // ------------------------------------------------------------------ bidirectional link
+        ObjectProperty<String> p3 = new SimpleObjectProperty<>();
+        ObjectProperty<String> p4 = new SimpleObjectProperty<>();
+
+        p3.addListener((o, oV, nV) -> System.out.println(nV));
+
+        p4.set("hello");    // prints nothing
+        System.out.println("--- now binding p3 to p4 ---");
+        p2.bindBidirectional(p4);   // prints "hello"
+        p4.set("world");    // prints "world"
+        p3.set("yes");      // not illegal, prints "yes"
 
         primaryStage.setScene(scene);
 
