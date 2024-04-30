@@ -21,3 +21,5 @@ Course material / notes for EPFL CS-108, practice of object-oriented programming
   - [JavaFX](/src/JavaFX) - Graphical User Interfaces with [JavaFX](https://gluonhq.com/products/javafx/)
 - Week 10:
   - [IntegralTypes](/src/IntegralTypes) - Integer representation and Bit manipulations
+- Week 11:
+  - [IO](/src/IO/) - Input / Output with java.io
