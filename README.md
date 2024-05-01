@@ -22,4 +22,15 @@ Course material / notes for EPFL CS-108, practice of object-oriented programming
 - Week 10:
   - [IntegralTypes](/src/IntegralTypes) - Integer representation and Bit manipulations
 - Week 11:
-  - [IO](/src/IO/) - Input / Output with java.io
+  - [IO](/src/IO) - Input / Output with java.io
+
+
+## Resources
+Below is are some resources useful for these course notes.
+
+### JavaFX Documentation
+This is the entire documentation for OpenJFX version 22:  
+[OpenJFX 22 Docs](https://openjfx.io/javadoc/22/index.html)
+
+### ASCII Map
+![ascii map](./1583px-USASCII_code_chart.png)

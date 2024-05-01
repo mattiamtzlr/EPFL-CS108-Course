@@ -21,5 +21,7 @@ public class Dump {
                 pos++;
             }
         }
+
+        System.out.println();
     }
 }
