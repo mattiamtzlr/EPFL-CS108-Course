@@ -3,26 +3,28 @@
 Course material / notes for EPFL CS-108, practice of object-oriented programming.
 
 ## Content
-- Week 1: 
+- Topic 1: 
   - [UnitTests](/src/UnitTests) - Unit Test with JUnit
   - [Immutability](/src/Immutability)
-- Week 2:
+- Topic 2:
   - [Generics](/src/Generics)
-- Week 3 and Week 4:
+- Topic 3 and Topic 4:
   - [Collections](/src/Collections)
-- Week 5:
+- Topic 5:
   - [Lambdas](/src/Lambdas)
   - [Streams](/src/Streams)
-- Week 6:
+- Topic 6:
   - [DesignPatterns](/src/DesignPatterns) - Design Patterns: Decorator, Adapter, Composite
-- Week 8:
+- Topic 7:
   - [DesignPatterns ⇒ Observers](/src/DesignPatterns/Observers) - Design Pattern: Observer / Subject
-- Week 9:
+- Topic 8:
   - [JavaFX](/src/JavaFX) - Graphical User Interfaces with [JavaFX](https://gluonhq.com/products/javafx/)
-- Week 10:
+- Topic 9:
   - [IntegralTypes](/src/IntegralTypes) - Integer representation and Bit manipulations
-- Week 11:
+- Topic 10:
   - [IO](/src/IO) - Input / Output with java.io
+- Topic 11:
+  - [EqualityOrderHash](/src/EqualityOrderHash) - equality, ordering, hashing
 
 
 ## Resources
