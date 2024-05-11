@@ -18,6 +18,14 @@ public class Date {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Date that
+                && this.year == that.year
+                && this.month == that.month
+                && this.day == that.day;
+    }
+
+    @Override
     public String toString() {
         return String.format("%d.%d.%d", day, month, year);
     }
