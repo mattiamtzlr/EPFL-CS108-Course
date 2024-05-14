@@ -25,6 +25,8 @@ Course material / notes for EPFL CS-108, practice of object-oriented programming
   - [IO](/src/IO) - Input / Output with java.io
 - Topic 11:
   - [EqualityOrderHash](/src/EqualityOrderHash) - equality, ordering, hashing
+- Topic 12:
+  - [Lists](/src/Lists) - List implementation in Java
 
 
 ## Resources
