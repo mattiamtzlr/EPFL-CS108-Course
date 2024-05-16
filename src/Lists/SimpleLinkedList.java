@@ -1,6 +1,7 @@
 package Lists;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
     private int size = 0;
@@ -24,24 +25,76 @@ public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
         size++;
     }
 
+    public void add(E e) {
+        add(size, e);
+    }
+
     @Override
     public void remove(int i) {
+        if (checkElementIndex(i) == 0) {
+            head = head.next;   // remove first element head is now next of old head
 
+        } else {
+            Node<E> pred = getNode(i - 1);
+            // remove any other element, predecessor is next of old predecessor's next
+            pred.next = pred.next.next;
+        }
+
+        size--;
     }
 
     @Override
     public E get(int i) {
-        return null;
+        return getNode(checkElementIndex(i)).element;
     }
 
     @Override
     public E set(int i, E e) {
-        return null;
+        Node<E> node = getNode(checkElementIndex(i));
+        E oldE = node.element;
+        node.element = e;
+        return oldE;
     }
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new Iterator<E>() {
+            private Node<E> pred = null, /*precedes*/ curr = null, /*precedes*/ next = head;
+            private boolean canRemove = false;
+            @Override
+            public boolean hasNext() {
+                return next != null;
+            }
+
+            @Override
+            public E next() {
+                if (!hasNext()) throw new NoSuchElementException();
+
+                canRemove = true;
+
+                E element = next.element;
+                pred = curr;
+                curr = next;
+                next = next.next;
+                return element;
+            }
+
+            @Override
+            public void remove() {
+                if (!canRemove) throw new IllegalStateException();
+
+                canRemove = false;
+
+                if (pred == null)
+                    head = head.next; // wrap around
+                else
+                    pred.next = pred.next.next;
+
+                curr = pred;
+                pred = null;
+                size--;
+            }
+        };
     }
 
     /**

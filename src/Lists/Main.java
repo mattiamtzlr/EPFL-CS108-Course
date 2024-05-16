@@ -1,5 +1,7 @@
 package Lists;
 
+import java.util.Iterator;
+
 public class Main {
     /* ================================= List implementations ======================================
 
@@ -63,5 +65,28 @@ public class Main {
 
         assert fruits.contains("Bananas");
         System.out.println(fruits.get(0));
+
+
+        SimpleLinkedList<String> shapes = new SimpleLinkedList<>();
+        shapes.add("circles");
+        shapes.add("rectangles");
+        shapes.add("squares");
+        System.out.println(shapes);
+
+        shapes.add(1, "parallelograms");
+        System.out.println(shapes);
+
+        assert !shapes.isEmpty();
+
+        shapes.remove(3);
+        System.out.println(shapes);
+
+        assert shapes.contains("parallelograms");
+        System.out.println(shapes.get(0));
+
+        Iterator<String> shapesIt = shapes.iterator();
+        while (shapesIt.hasNext()) {
+            System.out.println(shapesIt.next());
+        }
     }
 }
