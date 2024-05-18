@@ -3,5 +3,5 @@ module Course {
     requires java.desktop;
     requires org.junit.jupiter.api;
 
-    exports JavaFX;
+    exports T_06_JavaFX;
 }

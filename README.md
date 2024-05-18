@@ -4,29 +4,28 @@ Course material / notes for EPFL CS-108, practice of object-oriented programming
 
 ## Content
 - Topic 1: 
-  - [UnitTests](/src/UnitTests) - Unit Test with JUnit
-  - [Immutability](/src/Immutability)
+  - [Unit Tests](/src/T_01_UnitTests) - Unit Test with JUnit
+  - [Immutability](/src/T_01_Immutability)
 - Topic 2:
-  - [Generics](/src/Generics)
-- Topic 3 and Topic 4:
-  - [Collections](/src/Collections)
+  - [Generics](/src/T_02_Generics)
+- Topic 3:
+  - [Collections](/src/T_03_Collections) - Sets, Lists, Maps, etc.
+- Topic 4:
+  - [Lambdas](/src/T_04_Lambdas)
+  - [Streams](/src/T_04_Streams)
 - Topic 5:
-  - [Lambdas](/src/Lambdas)
-  - [Streams](/src/Streams)
+  - [Design Patterns](/src/T_05_DesignPatterns) - Decorator, Adapter, Composite
+  - [Design Patterns ⇒ Observers](/src/T_05_DesignPatterns/Observers) - Observer / Subject
 - Topic 6:
-  - [DesignPatterns](/src/DesignPatterns) - Design Patterns: Decorator, Adapter, Composite
+  - [JavaFX](/src/T_06_JavaFX) - Graphical User Interfaces with [JavaFX](https://gluonhq.com/products/javafx/)
 - Topic 7:
-  - [DesignPatterns ⇒ Observers](/src/DesignPatterns/Observers) - Design Pattern: Observer / Subject
+  - [Integral Types](/src/T_07_IntegralTypes) - Integer representation and Bit manipulations
 - Topic 8:
-  - [JavaFX](/src/JavaFX) - Graphical User Interfaces with [JavaFX](https://gluonhq.com/products/javafx/)
+  - [Input, Output](/src/T_08_InputOutput) - Input / Output with java.io
 - Topic 9:
-  - [IntegralTypes](/src/IntegralTypes) - Integer representation and Bit manipulations
+  - [Equality, Order, Hashing](/src/T_09_EqualityOrderHash) - 
 - Topic 10:
-  - [IO](/src/IO) - Input / Output with java.io
-- Topic 11:
-  - [EqualityOrderHash](/src/EqualityOrderHash) - equality, ordering, hashing
-- Topic 12:
-  - [Lists](/src/Lists) - List implementation in Java
+  - [Lists](/src/T_10_ListImplementation) - List implementation in Java
 
 
 ## Resources
