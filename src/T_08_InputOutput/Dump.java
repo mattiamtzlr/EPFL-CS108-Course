@@ -16,7 +16,7 @@ public class Dump {
             int b, pos = 0;
             while ((b = in.read()) != -1) {
                 if ((pos % 16) == 0)
-                    System.out.printf("%n%02x:", pos);
+                    System.out.printf("%n%02x:  ", pos);
                 System.out.printf(" %02x", b);
                 pos++;
             }

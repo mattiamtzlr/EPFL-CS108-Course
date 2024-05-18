@@ -22,7 +22,7 @@ public class SimpleArrayList<E> extends SimpleAbstractList<E> {
         } else {
             E[] newArray = (E[]) new Object[array.length * 2]; // double the size -> best complexity
             System.arraycopy(array, 0, newArray, 0, i);
-            System.arraycopy(array, i, newArray, i + 1, size - 1);
+            System.arraycopy(array, i, newArray, i + 1, size - i);
             array = newArray;
         }
         array[i] = e;

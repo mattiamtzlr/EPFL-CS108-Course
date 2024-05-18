@@ -35,7 +35,7 @@ public class Main {
             If each node contains only one reference (usually to its successor) the list is
             called singly-linked, if it contains references to both neighbors, it's called a
             doubly-liked list. Finally, if the last node and the first node are neighbors (and
-            are thus linked), the list is called circular.y
+            are thus linked), the list is called circular.
 
             A LinkedList always has access complexity of O(n) but insertion complexity is O(1) as
             no elements need to be moved around. This however only holds, if we assume that there
@@ -48,6 +48,8 @@ public class Main {
      */
 
     public static void main(String[] args) {
+        System.out.println("======== Array List ========");
+
         SimpleArrayList<String> fruits = new SimpleArrayList<>();
         fruits.add("Apples");
         fruits.add("Bananas");
@@ -66,6 +68,20 @@ public class Main {
         assert fruits.contains("Bananas");
         System.out.println(fruits.get(0));
 
+
+        SimpleArrayList<Integer> numbers = new SimpleArrayList<>();
+        for (int i = 0; i <= 20; i++) {
+            if (i != 15)
+                numbers.add(i);
+        }
+
+        System.out.println(STR."\n\{numbers}");
+
+        numbers.add(15, 15); // trigger resizing from 20 to 40
+        System.out.println(numbers);
+
+
+        System.out.println("\n\n======== Linked List ========");
 
         SimpleLinkedList<String> shapes = new SimpleLinkedList<>();
         shapes.add("circles");

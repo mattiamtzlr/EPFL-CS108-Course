@@ -35,15 +35,17 @@ public interface Shape {
     final class Circle implements Shape {
         private final Point pos;
         private final double radius;
+
         public Circle(Point pos, double radius) {
             this.pos = pos;
             this.radius = radius;
         }
+
         @Override
         public boolean contains(Point p) {
             return
                     (pos.x() + radius - Math.abs(p.x()) > 0) &&
-                    (pos.y() + radius - Math.abs(p.y()) > 0);
+                            (pos.y() + radius - Math.abs(p.y()) > 0);
         }
     }
 
@@ -51,11 +53,13 @@ public interface Shape {
     final class Translated implements Shape {
         private final Shape shape;
         private final double dx, dy;
+
         public Translated(Shape shape, double dx, double dy) {
             this.shape = shape;
             this.dx = dx;
             this.dy = dy;
         }
+
         public boolean contains(Point p) {
             return shape.contains(new Point(p.x() - dx, p.y() - dy));
         }

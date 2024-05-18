@@ -2,6 +2,8 @@ package T_08_InputOutput;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class Main {
     /* ==================================== Input / Output =========================================
@@ -24,8 +26,8 @@ public class Main {
 
 
         InputStream --------------------------------------------------------------------------------
-            There are two different types of subclasses of InputStream, those that take their values
-            directly from a file or network connection and those that filter the values of
+            There are two different types of subclasses of InputStream, those that take their
+            values directly from a file or network connection and those that filter the values of
             another stream.
 
 
@@ -75,7 +77,7 @@ public class Main {
 
 
             Marking methods:
-            These allow to mark a position in the stream to return to later. Rarely used
+            These allow to mark a position in the stream to return to later. Rarely used.
                 - boolean markSupported()
                   returns true iff the stream allows marking
 
@@ -168,6 +170,7 @@ public class Main {
                 accents, the arabic numbers and punctuation marks. Also included are a handful of
                 non-printable control characters.
 
+
             Unicode:
                 A Unicode character is represented by an integer called its code point which lies
                 either:
@@ -194,12 +197,12 @@ public class Main {
                     - 3 bytes:  0x000800 to 0x00FFFF
                     - 4 bytes:  0x010000 t0 0x10FFFF
 
-                A string composed entirely of ASCII characters will use the same code points for
+                A string composed entirely of ASCII characters will use the same code points
                 as its ASCII encoding and is entirely contained within the "1-byte"-section.
 
 
             UTF-16:
-                A character in UTF-8 uses the following amounts of bits, depending on its code
+                A character in UTF-16 uses the following amounts of bits, depending on its code
                 point:
                     - 2 bytes:  0x000000 to 0x00D7FF    and     0x00E000 to 0x00FFFF
                     - 4 bytes:  0x010000 to 0x10FFFF
@@ -248,7 +251,7 @@ public class Main {
             LF is used by Unix systems (macOS <10 used CR) and CRLF is used by Windows.
 
             Readers who need to detect line endings generally consider any of the above-mentioned
-            sequences to end a line:
+            sequences to end a line.
 
             Writers who need to write a line break use the system property line.separator, a
             string whose value can be obtained by the following call:
@@ -321,8 +324,10 @@ public class Main {
                         reader at all.
      */
 
-    private static final String FILE_NAME_BIN = "files/bytes.bin";
-    private static final String FILE_NAME_TXT = "files/text.txt";
+    private static final String FILE_NAME_BIN =   "files/bytes.bin";
+    private static final String FILE_NAME_TXT =   "files/text.txt";
+    private static final String FILE_NAME_UTF8 =  "files/utf-8.txt";
+    private static final String FILE_NAME_UTF16 = "files/utf-16.txt";
 
     public static void main(String[] args) throws IOException {
         System.out.println(STR."\n\nWriting to '\{FILE_NAME_BIN}'...");
@@ -370,5 +375,21 @@ public class Main {
             while ((line = reader.readLine()) != null)
                 System.out.println(line);
         }
+
+        // transform a UTF-8 encoded file into a UTF-16 encoded file
+        try (
+                Reader r = new FileReader(FILE_NAME_UTF8, StandardCharsets.UTF_8);
+                Writer w = new FileWriter(FILE_NAME_UTF16, StandardCharsets.UTF_16)
+        ) {
+            r.transferTo(w);
+        }
+
+        String content = Files.readString(Path.of(FILE_NAME_UTF8));
+
+        System.out.println(STR."\n\nUTF-8 version of the string '\{content}': ");
+        Dump.hexDump(FILE_NAME_UTF8, false);
+
+        System.out.println(STR."\n\nUTF-16 version of the string '\{content}': ");
+        Dump.hexDump(FILE_NAME_UTF16, false);
     }
 }

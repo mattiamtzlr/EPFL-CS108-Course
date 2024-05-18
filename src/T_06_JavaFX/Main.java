@@ -14,8 +14,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     /* ========================= Graphical User Interfaces with JavaFX =============================
-        Important: To get JavaFX to work, a module-info.java file needs to be defined in th projects
-                   src folder. Of course, JavaFX needs to be added as a library.
+
+        Important: To get JavaFX to work, a module-info.java file needs to be defined in the
+                   projects src folder. Of course, JavaFX needs to be added as a library.
 
         Fundamentals -------------------------------------------------------------------------------
             A JavaFX GUI is composed of a number of nodes, which can be simple geometric forms,
@@ -176,7 +177,7 @@ public class Main extends Application {
 
 
             Beans (what):
-                To combine multiple properties in a classe with the goal of making all of its
+                To combine multiple properties in a class with the goal of making all of its
                 attributes observable, a convention called JavaFX beans is used. It specifies:
                     - Every class attribute is represented by a property
 
@@ -308,8 +309,9 @@ public class Main extends Application {
         p3.addListener((o, oV, nV) -> System.out.println(nV));
 
         p4.set("hello");    // prints nothing
-        System.out.println("--- now binding p3 to p4 ---");
-        p2.bindBidirectional(p4);   // prints "hello"
+        System.out.println("--- now binding p3 to p4 bidirectionally ---");
+        // prints "hello" as the value in p4 is copied a first time and thus registered as change
+        p3.bindBidirectional(p4);
         p4.set("world");    // prints "world"
         p3.set("yes");      // not illegal, prints "yes"
 

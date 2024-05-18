@@ -14,9 +14,13 @@ public class Main {
                 - no mutable value is ever passed to the outside of the instance, either they are
                   made unmodifiable or only a deep copy is given.
 
+                - the class itself is final, such that it cannot be extended and possibly be
+                  rendered mutable.
+
 
             To still be able to modify an instance of an immutable class, methods similar to setters
             are provided, they however return a new instance with the wanted modifications.
+
             Thus:
                 public className withAttribute(attributeType value) {
                     return new className(value {, ...});

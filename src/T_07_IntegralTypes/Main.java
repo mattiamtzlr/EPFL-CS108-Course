@@ -92,7 +92,7 @@ public class Main {
             Bit strings are often used to pack multiple values into one such as colors.
     */
 
-    static StringJoiner sj = new StringJoiner(", ", "{", "}");
+    static StringJoiner sj = new StringJoiner(", ");
 
     public static void main(String[] args) {
         byte a = (byte) 0b1111_1111;    // -1
@@ -100,7 +100,7 @@ public class Main {
         byte c = (byte) 0b0100_1000;    // +72
 
         int maxInt = 0b01111111_11111111_11111111_11111111;     // +2'147'483'647
-        long x = 0xFADE_75BCL;  // some random hex value
+        long x = 0x3033_DEAD_BEEF_1024L;  // some random hex value
 
         int y =    0b00110100_00110110_10001111_00110111;
         int mask = 0b00000000_00000000_11111111_00000000;

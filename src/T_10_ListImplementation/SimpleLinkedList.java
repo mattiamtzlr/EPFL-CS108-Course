@@ -16,11 +16,12 @@ public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
     public void add(int i, E e) {
         if (checkPositionIndex(i) == 0) {
             // change head
-            head = new Node<>(head, e); // new head now links to old head
+            head = new Node<>(head, e); // old head now links to new head which contains new elem
 
         } else {
-            Node<E> pred = getNode(i - 1); // pred for predecessor
-            pred.next = new Node<>(pred.next, e); // change the content of the previous node
+            Node<E> pred = getNode(i - 1); // pred = predecessor
+            // change the content of the previous node's successor which contains the new elem
+            pred.next = new Node<>(pred.next, e);
         }
         size++;
     }
@@ -32,11 +33,11 @@ public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
     @Override
     public void remove(int i) {
         if (checkElementIndex(i) == 0) {
-            head = head.next;   // remove first element head is now next of old head
+            head = head.next;   // remove first element: head is now next of old head
 
         } else {
             Node<E> pred = getNode(i - 1);
-            // remove any other element, predecessor is next of old predecessor's next
+            // remove any other element: predecessor is next of old predecessor's next
             pred.next = pred.next.next;
         }
 
@@ -85,10 +86,10 @@ public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
 
                 canRemove = false;
 
-                if (pred == null)
-                    head = head.next; // wrap around
+                if (pred == null) // we are at the head as there is no pred
+                    head = head.next;
                 else
-                    pred.next = pred.next.next;
+                    pred.next = pred.next.next; // link predecessor's next to old next's next
 
                 curr = pred;
                 pred = null;
@@ -99,7 +100,7 @@ public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
 
     /**
      * Private helper method to find the node corresponding to a given index. It follows the
-     * links between the nodes to find the wanted index, which generally leads to complexitiy of
+     * links between the nodes to find the wanted index, which generally leads to complexity of
      * O(n).
      *
      * @param i the wanted index

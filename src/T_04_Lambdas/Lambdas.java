@@ -39,6 +39,10 @@ public class Lambdas {
                   return lc != 0 ? lc : s1.compareTo(s2);
                 };
 
+            The above models a comparator which first compares two strings by their length,
+            afterward by their lexicographic ordering if they have the same length.
+
+
             A useful use case of lambda functions is Iterable::forEach, which applies the given
             method or lambda function to each element of the given list. See below.
 
@@ -124,14 +128,14 @@ public class Lambdas {
         System.out.println(intsPlus1);
 
         Maps.charIntMap.forEach(
-                (k, v) -> System.out.println(k + ": " + v)
+                (k, v) -> System.out.println(STR."\{k}: \{v}")
         );
 
         // useful for counting occurrences
         List<String> words = List.of("to", "be", "or", "not", "to", "be");
         Map<String, Integer> count = new HashMap<>();
         for (String word : words) {
-            count.merge(word, 1, (k, v) -> k + 1);
+            count.merge(word, 1, (current, _) -> current + 1);
         }
         System.out.println(count);
     }

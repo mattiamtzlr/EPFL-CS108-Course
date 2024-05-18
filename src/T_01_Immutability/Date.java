@@ -1,6 +1,6 @@
 package T_01_Immutability;
 
-public class Date {
+public final class Date {
     private final int year, month, day;
 
     private Date(int year, int month, int day) {

@@ -44,7 +44,7 @@ public class Main {
     /* ======================================= Ordering ============================================
 
         Again, there are two general points of view when it comes to ordering instances of a class:
-            1. let the class implement the Comparable interface and thus offers a method to
+            1. let the class implement the Comparable interface and thus offer a method to
                compare a given instance to another.
 
             2. by using an external comparator implementing the Comparator interface (as a lambda
@@ -57,8 +57,8 @@ public class Main {
             functional:
                 - int compareTo(T that)
                   returns a negative value if this < that
-                            positive value if this > that
-                            zero           if this = that
+                          a positive value if this > that
+                          zero             if this = that
 
 
             As Comparable is generic, each class implementing it has to pass its own type as the
@@ -84,8 +84,8 @@ public class Main {
             functional:
                 - int compare(T o1, T o2)
                   returns a negative value if o1 < o2
-                            positive value if o1 > o2
-                            zero           if o1 = o2
+                          a positive value if o1 > o2
+                          zero             if o1 = o2
 
 
             The main difference between Comparable and Comparator is that, Comparable is

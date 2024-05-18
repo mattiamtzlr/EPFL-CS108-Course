@@ -30,21 +30,22 @@ public class Lists {
         System.out.println(newList);
         System.out.println(copy);
     }
+
+    static class Thing {
+        private int a;
+
+        public Thing(int a) {
+            this.a = a;
+        }
+
+        public void setA(int a) {
+            this.a = a;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(this.a);
+        }
+    }
 }
 
-class Thing {
-    private int a;
-
-    public Thing(int a) {
-        this.a = a;
-    }
-
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    @Override
-    public String toString() {
-        return String.valueOf(this.a);
-    }
-}

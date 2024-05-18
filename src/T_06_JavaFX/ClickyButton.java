@@ -22,8 +22,16 @@ public class ClickyButton extends Application {
         button.setStyle("border-radius: 10px;");
 
         // adding an event listener to the button
-        button.setOnAction(e ->
-            System.out.println(STR."Button clicked! Event type: \{e.getEventType()}"));
+        button.setOnMouseClicked(e -> {
+            switch (e.getButton()) {
+                case PRIMARY   -> System.out.print("Button clicked with left button!");
+                case SECONDARY -> System.out.print("Button clicked with right button!");
+            }
+            if (e.isAltDown())
+                System.out.print(" ALT key is also pressed!");
+
+            System.out.println();
+        });
 
         VBox vBox = new VBox(button);
         vBox.setAlignment(Pos.CENTER);

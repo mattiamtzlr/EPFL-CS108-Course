@@ -70,7 +70,7 @@ public class Main {
                     - Creating new arrays with generic types:
                         T[] things = new T[]{...}; // not allowed
 
-                    - Instance tests using instance of are not possible:
+                    - Instance tests using instanceof are not possible:
                         public <T> generic(T thing) {
                             if (t instanceof Integer) {...} // not allowed
                         }
@@ -88,7 +88,7 @@ public class Main {
         System.out.println(message.verboseString());
         System.out.println(date.verboseString());
 
-        System.out.println("Year: " + date.get().getYear());
+        System.out.println(STR."Year: \{date.get().getYear()}");
 
         // ================================================================= pair shenanigans
         Pair<String, Date> pair = new Pair<>("Happy new year ", d);
