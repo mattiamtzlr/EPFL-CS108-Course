@@ -23,7 +23,7 @@ Course material / notes for EPFL CS-108, practice of object-oriented programming
 - Topic 8:
   - [Input, Output](/src/T_08_InputOutput) - Input / Output with java.io
 - Topic 9:
-  - [Equality, Order, Hashing](/src/T_09_EqualityOrderHash) - 
+  - [Equality, Order, Hashing](/src/T_09_EqualityOrderHash)
 - Topic 10:
   - [Lists](/src/T_10_ListImplementation) - List implementation in Java
 
