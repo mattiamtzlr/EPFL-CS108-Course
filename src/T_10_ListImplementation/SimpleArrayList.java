@@ -29,6 +29,7 @@ public class SimpleArrayList<E> extends SimpleAbstractList<E> {
         size++;
     }
 
+    @Override
     public void add(E e) {
         add(size, e);
     }
@@ -55,7 +56,7 @@ public class SimpleArrayList<E> extends SimpleAbstractList<E> {
     @Override
     public Iterator<E> iterator() {
         // anonymous inner class
-        return new Iterator<E>() {
+        return new Iterator<>() {
             private int nextI = 0;
             private boolean canRemove = false;
 

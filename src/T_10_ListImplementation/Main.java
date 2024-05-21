@@ -14,7 +14,6 @@ public class Main {
         SimpleArrayList and SimpleLinkedList.
 
 
-
         ArrayList ----------------------------------------------------------------------------------
             The elements of an ArrayList are stored in an array whose size is updated when needed.
 

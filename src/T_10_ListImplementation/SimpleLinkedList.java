@@ -26,8 +26,9 @@ public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
         size++;
     }
 
+    @Override
     public void add(E e) {
-        add(size, e);
+        add(0, e);
     }
 
     @Override
@@ -59,7 +60,7 @@ public class SimpleLinkedList<E> extends SimpleAbstractList<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return new Iterator<E>() {
+        return new Iterator<>() {
             private Node<E> pred = null, /*precedes*/ curr = null, /*precedes*/ next = head;
             private boolean canRemove = false;
             @Override
