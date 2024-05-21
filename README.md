@@ -26,6 +26,8 @@ Course material / notes for EPFL CS-108, practice of object-oriented programming
   - [Equality, Order, Hashing](/src/T_09_EqualityOrderHash)
 - Topic 10:
   - [Lists](/src/T_10_ListImplementation) - List implementation in Java
+- Topic 11:
+  - [Sets](/src/T_11_SetImplementation) - Set implementation in Java
 
 
 ## Resources
