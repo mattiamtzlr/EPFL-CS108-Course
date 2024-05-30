@@ -9,9 +9,9 @@ public class HashCodes {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof Person that
-                    && this.firstName.equals(that.firstName)
-                    && this.lastName.equals(that.lastName)
-                    && this.birthDate.equals(that.birthDate);
+                && this.firstName.equals(that.firstName)
+                && this.lastName.equals(that.lastName)
+                && this.birthDate.equals(that.birthDate);
         }
 
         @Override
@@ -24,7 +24,7 @@ public class HashCodes {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof SimpleString that
-                    && this.value.equals(that.value);
+                && this.value.equals(that.value);
         }
 
         @Override
@@ -37,7 +37,7 @@ public class HashCodes {
         @Override
         public boolean equals(Object obj) {
             return obj instanceof SimpleNumber that
-                    && this.value == that.value;
+                && this.value == that.value;
         }
 
         @Override

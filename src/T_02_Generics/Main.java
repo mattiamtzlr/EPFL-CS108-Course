@@ -46,7 +46,7 @@ public class Main {
                         }
                     }
 
-                When called, the specific type should strictly speaking be declared:
+                When called, the specific type should - strictly speaking - be declared:
                     Normal.<Integer>genericMethod(5);
 
                 This is usually redundant however, as these types can be inferred from the argument:

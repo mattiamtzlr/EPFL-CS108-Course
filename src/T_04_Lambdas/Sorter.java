@@ -4,6 +4,7 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public final class Sorter {
+
     /**
      * Sorts a list of Integers in the given order.
      *
@@ -13,9 +14,9 @@ public final class Sorter {
      */
     public static void sort(List<Integer> l, Order o) {
         l.sort(
-                (i1, i2) -> o.equals(Order.ASCENDING)
-                        ? Integer.compare(i1, i2)
-                        : Integer.compare(i2, i1)
+            (i1, i2) -> o.equals(Order.ASCENDING)
+                ? Integer.compare(i1, i2)
+                : Integer.compare(i2, i1)
         );
     }
 

@@ -19,9 +19,6 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{ " +
-                "name = '" + name + '\'' +
-                ", birthdate = " + birthdate +
-                " }";
+        return STR."Person{ name = '\{name}\{'\''}, birthdate = \{birthdate} }";
     }
 }

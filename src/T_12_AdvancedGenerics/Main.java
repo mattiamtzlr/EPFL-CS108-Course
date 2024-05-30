@@ -30,7 +30,7 @@ public class Main {
             which means that subtyping is a partial order.
 
 
-            If T1 is a subtype of T2, then T2 is a supertype of T1, denoted by T2 > T1.
+            If T1 is a subtype of T2, then T2 is a supertype of T1, denoted here by T2 > T1.
 
 
 
@@ -42,8 +42,8 @@ public class Main {
             This makes it impossible, for example, to use the method addAll on a list of type
             List<Number> with an argument of type List<Integer> even though Integer < Number.
 
-            The reason for this, is that it would allow adding a double to an integer list, if
-            this restriction wouldn't exist.
+            The reason for this, is that it would allow adding a double to an integer list for
+            instance, if this restriction wouldn't exist.
 
 
             One method to get around this issue is using the upper bound for type parameters:
@@ -70,7 +70,7 @@ public class Main {
 
 
         Lower bounds -------------------------------------------------------------------------------
-            To create a lower bound for type parameters, which is to say, specify a type which is
+            Create a lower bound for type parameters, which is to say, specify a type which is
             a supertype (!) of some other type.
 
             This could for example be useful to create the method addAllInto specified below,
@@ -113,6 +113,7 @@ public class Main {
         System.out.println(STR."doubles: \{doubles}");
 
         addAllInto(doubles, numbers);
+        // addAllInto(numbers, doubles);    // this would cause trouble
         System.out.println(STR."numbers: \{numbers}");
     }
 }

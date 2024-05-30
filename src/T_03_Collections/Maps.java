@@ -7,19 +7,19 @@ import java.util.Set;
 public class Maps {
 
     /*
-        HashMap  -  guarantees that the keys are hash-able and thus guarantees O(1) lookup (generally)
+        HashMap - guarantees that the keys are hash-able and thus guarantees O(1) lookup (generally)
                     but gives no guarantee of the order of lookup.
 
-        TreeMap  -  guarantees that the keys are comparable, thus guaranteeing increasing lookup order
+        TreeMap - guarantees that the keys are comparable, thus guaranteeing increasing lookup order
                     but has O(log n)
      */
 
     public static Map<Character, Integer> charIntMap = new HashMap<>(Map.of(
-            'a', 403,
-            'b', 810,
-            'c', 300,
-            'd', 164,
-            'e', 760
+        'a', 403,
+        'b', 810,
+        'c', 300,
+        'd', 164,
+        'e', 760
     ));
 
     public static void main(String[] args) {

@@ -26,7 +26,7 @@ public class Main {
                     return new className(value {, ...});
                 }
 
-                instead of:
+            instead of:
 
                 public void setAttribute(attributeType value) {
                     this.attributeName = value;
@@ -53,50 +53,7 @@ public class Main {
 
             The builder class is usually nested inside the class it builds and is thus static:
 
-            Example:
-                public class Person {
-                    private final int age;
-                    private final String name;
-
-                    // private on purpose to guarantee immutability through builder
-                    private Person(int age, String name) {
-                        this.age = age;
-                        this.name = name;
-                    }
-
-                    public static final class Builder {
-                        private int age;
-                        private String name;
-
-                        public Builder() {
-                            this.age = 0;
-                            this.name = "";
-                        }
-
-                        public Builder setAge(int age) {
-                            this.age = age;
-                            return this;
-                        }
-
-                        public Builder setName(String name) {
-                            this.name = name;
-                            return this;
-                        }
-
-                        public Person build() {
-                            return new Person(this.age, this.name);
-                        }
-                    }
-                }
-
-                public class Main {
-                    public static void main(String[] args) {
-                        Person p = new Person.Builder()
-                                        .setAge(19)
-                                        .setName("Mattia")
-                                        .build();
-                    }
-                }
+            Example: see Date class
      */
 
     public static void main(String[] args) {

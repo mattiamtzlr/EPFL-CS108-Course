@@ -21,8 +21,9 @@ public class Lambdas {
 
 
         Lambda functions ---------------------------------------------------------------------------
-            A lambda function creates an anonymous class of the given functional interface, with
-            the given arguments and body, then calls the (only) abstract method on it.
+            A lambda function creates an anonymous class instance of the given functional
+            interface, with the (only) abstract method of that interface being implemented by the
+            lambda. That method is then called. See the main method below.
 
             Lambdas can only be used with functional interfaces, for the reasons described above.
 
@@ -37,7 +38,7 @@ public class Lambdas {
                Comparator<String> c = (s1, s2) -> {
                   int lc = Integer.compare(s1.length(), s2.length());
                   return lc != 0 ? lc : s1.compareTo(s2);
-                };
+               };
 
             The above models a comparator which first compares two strings by their length,
             afterward by their lexicographic ordering if they have the same length.
@@ -104,6 +105,20 @@ public class Lambdas {
     }
 
     public static void main(String[] args) {
+        // the following lambda ...
+        RealFunction lambda = x -> x + 3.14;
+
+        // ... is equivalent to the following anonymous class instance ...
+        RealFunction anon = new RealFunction() {
+            @Override
+            public double valueAt(double x) {
+                return x + 3.14;
+            }
+        };
+
+        // ... and both can be used equally:
+        System.out.println(STR."Lambda: \{lambda.valueAt(5)} | Anon: \{anon.valueAt(5)}");
+
         List<Integer> ints = new ArrayList<>(List.of(34, 18, 58, 23, 95, 87, 72, 46));
         sortDescendingLambda(ints);
         System.out.println(ints);

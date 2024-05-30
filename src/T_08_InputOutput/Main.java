@@ -33,7 +33,7 @@ public class Main {
 
             Read Methods:
             All of these methods consume the values they read.
-            Those that return an int return the value of the byte as an integer between 0 and 255
+            Those that return an int, return the value of the byte as an integer between 0 and 255
             inclusive (unsigned), those that return a byte array, use signed values thus all
             elements of the array are between -128 and 127 inclusive.
                 - int read()

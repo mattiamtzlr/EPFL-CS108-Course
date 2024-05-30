@@ -2,9 +2,7 @@ package T_09_EqualityOrderHash;
 
 import T_01_Immutability.Date;
 
-import java.util.Set;
-import java.util.StringJoiner;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Main {
     /* ======================================= Equality ============================================
@@ -224,7 +222,7 @@ public class Main {
         // using the classes from HashCodes
         Date date = new Date.Builder().setYear(1969).setMonth(12).setDay(28).build();
         HashCodes.Person person = new HashCodes.Person(
-                "Linus", "Torvalds", date
+            "Linus", "Torvalds", date
         );
         System.out.println(STR."Hash value of 'person': \{person.hashCode()}");
 
